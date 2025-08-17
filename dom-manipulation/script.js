@@ -113,6 +113,7 @@ async function postQuoteToServer(quote) {
 function syncQuotes() {
   console.log("Syncing with server...");
   fetchQuotesFromServer();
+  alert("Quotes synced with server!");
 }
 
 // -------------------------
@@ -138,7 +139,7 @@ function mergeQuotes(serverQuotes) {
 // -------------------------
 // UI Notification for updates
 // -------------------------
-function notifyUpdate(message = "Quotes updated from server!", isConflict = false) {
+function notifyUpdate(message = "Quotes synced with server!", isConflict = false) {
   const noteArea = document.getElementById("notificationArea");
   noteArea.textContent = message;
   noteArea.style.background = isConflict ? "lightcoral" : "lightgreen";
