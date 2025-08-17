@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dynamic Quote Generator</title>
+  <title>Dynamic Quote Generator with Storage</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -31,8 +31,13 @@
   <div id="quoteDisplay"></div>
   <button id="newQuote">Show New Quote</button>
 
-  <!-- The Add Quote Form will be created dynamically here -->
+  <!-- Add Quote Form will be created dynamically -->
   <div id="formContainer"></div>
+
+  <!-- JSON Import/Export -->
+  <h2>Import & Export Quotes</h2>
+  <button id="exportBtn">Export Quotes (JSON)</button>
+  <input type="file" id="importFile" accept=".json" />
 
   <script src="script.js"></script>
 </body>
