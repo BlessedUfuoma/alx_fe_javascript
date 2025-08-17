@@ -18,15 +18,7 @@
       border-radius: 8px;
       min-height: 50px;
     }
-    .quote-text {
-      font-size: 1.2em;
-      color: #333;
-    }
-    .quote-category {
-      font-size: 0.9em;
-      color: #777;
-    }
-    input, button, select {
+    input, button {
       margin: 5px 0;
       padding: 8px;
     }
@@ -39,15 +31,8 @@
   <div id="quoteDisplay"></div>
   <button id="newQuote">Show New Quote</button>
 
-  <!-- Add Quote Form -->
-  <h2>Add a New Quote</h2>
-  <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-  <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-  <button onclick="addQuote()">Add Quote</button>
-
-  <!-- Category Selector -->
-  <h2>Filter by Category</h2>
-  <select id="categorySelect"></select>
+  <!-- The Add Quote Form will be created dynamically here -->
+  <div id="formContainer"></div>
 
   <script src="script.js"></script>
 </body>
