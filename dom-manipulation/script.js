@@ -48,8 +48,6 @@ function addQuote() {
     categoryInput.value = "";
     populateCategories();
     showRandomQuote();
-  } else {
-    alert("Please enter both quote text and category!");
   }
 }
 
@@ -57,11 +55,24 @@ function addQuote() {
 // Create the Add Quote form
 // -------------------------
 function createAddQuoteForm() {
-  formContainer.innerHTML = `
-    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
-    <button onclick="addQuote()">Add Quote</button>
-  `;
+  const textInput = document.createElement("input");
+  textInput.id = "newQuoteText";
+  textInput.type = "text";
+  textInput.placeholder = "Enter a new quote";
+
+  const categoryInput = document.createElement("input");
+  categoryInput.id = "newQuoteCategory";
+  categoryInput.type = "text";
+  categoryInput.placeholder = "Enter quote category";
+
+  const addBtn = document.createElement("button");
+  addBtn.textContent = "Add Quote";
+  addBtn.addEventListener("click", addQuote);
+
+  formContainer.innerHTML = ""; // clear old form
+  formContainer.appendChild(textInput);
+  formContainer.appendChild(categoryInput);
+  formContainer.appendChild(addBtn);
 }
 
 // -------------------------
@@ -69,9 +80,16 @@ function createAddQuoteForm() {
 // -------------------------
 function populateCategories() {
   const categories = ["All", ...new Set(quotes.map(q => q.category))];
-  categoryFilter.innerHTML = categories.map(cat => `<option value="${cat}">${cat}</option>`).join("");
+  categoryFilter.innerHTML = "";
 
-  // Restore last selected category from localStorage
+  categories.forEach(cat => {
+    const option = document.createElement("option");
+    option.value = cat;
+    option.textContent = cat;
+    categoryFilter.appendChild(option);
+  });
+
+  // Restore last selected category
   const savedCategory = localStorage.getItem("selectedCategory");
   if (savedCategory && categories.includes(savedCategory)) {
     categoryFilter.value = savedCategory;
